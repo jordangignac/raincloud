@@ -1,0 +1,11 @@
+.container {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.tracklist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 75px 10px 10px 10px;
+}

@@ -1,0 +1,41 @@
+.userItem {
+  display: flex;
+  width: 75%;
+  height: 50px;
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(27, 27, 27, 0.1);
+}
+
+.profilePic {
+  width: 50px;
+  height: 100%;
+  position: relative;
+  img {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 75%;
+    margin: auto;
+    position: absolute;
+    border-radius: 50%;
+  }
+}
+
+.profileName {
+  margin-left: 5px;
+  line-height: 50px;
+}
+
+.profileDelete {
+  width: 35px;
+  font-size: 10px;
+  line-height: 50px;
+  margin-left: auto;
+  text-align: center;
+  color: rgba(27,27,27,0.75);
+  transition: all 0.3s ease;
+}

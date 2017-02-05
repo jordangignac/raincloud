@@ -34,7 +34,7 @@ router.get('/favorites/:username', (req, res) => {
           uri: data[i].uri
         }
         tracks.push(track);
-        if (i === data.length - 1) return res.json(tracks);
+        if (i == data.length - 1) return res.json(tracks);
       }
     })
     .catch(({ error }) => res.json({ error: error.status + ' : ' + error.statusText }));
