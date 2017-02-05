@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Header.scss';
 
-const Header = ({ brand, toggleNav }) => {
+const Header = ({ toggleNav }) => {
   return(
     <div className={styles.header}>
       <a className={styles.menuToggle} onClick={toggleNav}>
@@ -9,7 +9,7 @@ const Header = ({ brand, toggleNav }) => {
         <span></span>
         <span></span>
       </a>
-      <a>{brand}</a>
+      <a>rain<span className={styles.blue}>///</span>cloud</a>
     </div>
   );
 };

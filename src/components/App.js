@@ -75,7 +75,7 @@ class App extends React.Component {
           <Sidebar users={this.state.users} addUser={this.addUser} removeUser={this.removeUser} addPlaylist={this.addPlaylist}/>
         </div>
         <div className={contentWrapper}>
-          <Header brand={this.props.brand} toggleNav={this.toggleNav}/>
+          <Header toggleNav={this.toggleNav}/>
           <TrackList playlist={this.state.playlist}/>
         </div>
       </div>
