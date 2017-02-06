@@ -1,15 +1,36 @@
 import React from 'react';
-import plyr from 'plyr';
 import ReactDOM from 'react-dom';
 import styles from './Audio.scss';
+import plyr from 'plyr';
 
 class Audio extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.player = plyr.setup(styles.plyrInstance)[0];
+    this.player.source({
+      type: 'audio',
+      sources: [{
+        src: '/api/v1/tracks/' + this.props.selectedTrack,
+        type: 'audio/mp3'
+      }]
+    });
+    this.player.play();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.selectedTrack !== nextProps.selectedTrack) {
+      this.player.source({
+        type: 'audio',
+        sources: [{
+          src: '/api/v1/tracks/' + nextProps.selectedTrack,
+          type: 'audio/mp3'
+        }]
+      });
+      this.player.play();
+    }
+  }
+
+  componentWillUnmount() {
+    this.player.destroy();
   }
 
   render() {

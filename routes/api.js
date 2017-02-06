@@ -1,5 +1,6 @@
 let express = require('express');
 let axios = require('axios');
+let request = require('request');
 
 const token = process.env.SC_TOKEN || 'foobar';
 const router = module.exports = express.Router();
@@ -16,7 +17,7 @@ router.get('/users/:username', (req, res) => {
       };
       return res.json(user);
     })
-    .catch(({ error }) => res.json({ error: error.status + ' : ' + error.statusText }));
+    .catch(({ response }) => res.json({ error: response.status + ' : ' + response.statusText }));
 });
 
 router.get('/favorites/:username', (req, res) => {
@@ -37,5 +38,10 @@ router.get('/favorites/:username', (req, res) => {
         if (i == data.length - 1) return res.json(tracks);
       }
     })
-    .catch(({ error }) => res.json({ error: error.status + ' : ' + error.statusText }));
+    .catch(({ response }) => res.json({ error: response.status + ' : ' + response.statusText }));
+});
+
+router.get('/tracks/:id', (req, res) => {
+  var url = 'http://api.soundcloud.com/tracks/' + req.params.id + '/stream?client_id=' + token;
+  request(url).pipe(res);
 });

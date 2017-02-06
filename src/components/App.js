@@ -10,9 +10,11 @@ class App extends React.Component {
     super(props);
     this.state = {
       users: [],
+      selectedTrack: null,
       navOpen: false
     };
     this.toggleNav = this.toggleNav.bind(this);
+    this.toggleTrack = this.toggleTrack.bind(this);
     this.togglePlaylist = this.togglePlaylist.bind(this);
     this.removeUser = this.removeUser.bind(this);
     this.addUser = this.addUser.bind(this);
@@ -31,10 +33,18 @@ class App extends React.Component {
     }
   }
 
+  toggleTrack(id) {
+    if (id == this.state.selectedTrack) {
+      this.setState({ selectedTrack: null });
+    } else {
+      this.setState({ selectedTrack: id });
+    }
+  }
+
   addUser(username) {
     let url = '/api/v1/users/' + username;
     let found = this.state.users.find(o => o.username == username);
-    let newUser = { };
+    let newUser = {};
 
     if (!found) {
       axios.get(url)
@@ -69,8 +79,8 @@ class App extends React.Component {
           <Sidebar users={this.state.users} addUser={this.addUser} removeUser={this.removeUser} togglePlaylist={this.togglePlaylist}/>
         </div>
         <div className={contentWrapper}>
-          <Header toggleNav={this.toggleNav}/>
-          <TrackList users={this.state.users}/>
+          <Header toggleNav={this.toggleNav} selectedTrack={this.state.selectedTrack}/>
+          <TrackList users={this.state.users} toggleTrack={this.toggleTrack}/>
         </div>
       </div>
     );

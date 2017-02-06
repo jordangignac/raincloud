@@ -2,7 +2,7 @@ import React from 'react';
 import Audio from '../Audio/Audio';
 import styles from './Header.scss';
 
-const Header = ({ toggleNav }) => {
+const Header = ({ toggleNav, selectedTrack }) => {
   return(
     <div className={styles.header}>
       <a className={styles.menuToggle} onClick={toggleNav}>
@@ -12,7 +12,7 @@ const Header = ({ toggleNav }) => {
       </a>
       <a>rain<span className={styles.blue}>///</span>cloud</a>
       <div className={styles.audioContainer}>
-        <Audio />
+        { selectedTrack ? <Audio selectedTrack={selectedTrack}/> : '' }
       </div>
     </div>
   );
