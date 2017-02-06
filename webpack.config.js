@@ -22,5 +22,11 @@ module.exports = {
   },
   postcss: () => {
     return [ require('autoprefixer') ];
+  },
+  resolve: {
+    alias: {
+      'react': 'preact-compat',
+      'react-dom': 'preact-compat'
+    }
   }
 };
