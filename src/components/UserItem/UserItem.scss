@@ -7,11 +7,13 @@
   user-select: none;
   border-radius: 5px;
   margin-bottom: 15px;
+  transition: all 0.25s ease;
   border: 1px solid rgba(27, 27, 27, 0.1);
 }
 
 .selected {
   border: 1px solid rgba(33,150,243, 0.5);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.07), 0 2px 5px rgba(0,0,0,0.03);
 }
 
 .profilePic {
