@@ -8,7 +8,7 @@ class Audio extends React.Component {
     this.player.source({
       type: 'audio',
       sources: [{
-        src: '/api/v1/tracks/' + this.props.selectedTrack,
+        src: '/api/v1/tracks/' + this.props.selectedTrack.id,
         type: 'audio/mp3'
       }]
     });
@@ -20,7 +20,7 @@ class Audio extends React.Component {
       this.player.source({
         type: 'audio',
         sources: [{
-          src: '/api/v1/tracks/' + nextProps.selectedTrack,
+          src: '/api/v1/tracks/' + nextProps.selectedTrack.id,
           type: 'audio/mp3'
         }]
       });

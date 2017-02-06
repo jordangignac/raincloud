@@ -8,7 +8,7 @@ const TrackList = ({ users, toggleTrack }) => {
       <div className={styles.tracklist}>
         {users.map((user) => {
           if (user.selected == true) return user.tracks.map((track) => (
-            <TrackItem key={track.id} id={track.id} image={track.artwork_url} username={track.username} title={track.title} toggleTrack={toggleTrack}/>
+            <TrackItem key={track.id} id={track.id} image={track.artwork_url} name={track.username} username={user.username} title={track.title} toggleTrack={toggleTrack}/>
           ));
         })}
       </div>

@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './TrackItem.scss';
 
-const TrackItem = ({ id, image, username, title, toggleTrack }) => {
+const TrackItem = ({ id, image, name, username, title, toggleTrack }) => {
   return (
-    <div className={styles.trackItem} onClick={() => toggleTrack(id)}>
+    <div className={styles.trackItem} onClick={() => toggleTrack(id, username)}>
       <img src={image}></img>
     </div>
   );

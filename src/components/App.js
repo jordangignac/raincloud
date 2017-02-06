@@ -33,11 +33,14 @@ class App extends React.Component {
     }
   }
 
-  toggleTrack(id) {
-    if (id == this.state.selectedTrack) {
+  toggleTrack(id, username) {
+    let user = this.state.users.find(o => o.username == username);
+    let index = user.tracks.findIndex(o => o.id == id);
+
+    if (this.state.selectedTrack && id == this.state.selectedTrack.id) {
       this.setState({ selectedTrack: null });
     } else {
-      this.setState({ selectedTrack: id });
+      this.setState({ selectedTrack: { id: id, index: index } });
     }
   }
 
