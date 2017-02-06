@@ -32,7 +32,7 @@ class App extends React.Component {
   }
 
   addUser(username) {
-    let url = 'http://localhost:3000/api/v1/users/' + username;
+    let url = '/api/v1/users/' + username;
     let found = this.state.users.find(o => o.username == username);
     let newUser = { };
 
