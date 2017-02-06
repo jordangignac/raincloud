@@ -1,4 +1,5 @@
 import React from 'react';
+import Audio from '../Audio/Audio';
 import styles from './Header.scss';
 
 const Header = ({ toggleNav }) => {
@@ -10,6 +11,9 @@ const Header = ({ toggleNav }) => {
         <span></span>
       </a>
       <a>rain<span className={styles.blue}>///</span>cloud</a>
+      <div className={styles.audioContainer}>
+        <Audio />
+      </div>
     </div>
   );
 };
