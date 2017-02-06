@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import styles from './Audio.scss';
 import plyr from 'plyr';
+import styles from './Audio.scss';
 
 class Audio extends React.Component {
   componentDidMount() {
