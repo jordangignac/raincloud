@@ -10,7 +10,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       users: [],
-      playlist: [],
       navOpen: false
     };
     this.toggleNav = this.toggleNav.bind(this);
@@ -27,7 +26,7 @@ class App extends React.Component {
     let users = this.state.users;
     let index = users.findIndex(o => o.username == username);
     if (index >= 0) {
-      users[index].selected = true;
+      users[index].selected = !users[index].selected;
       this.setState({ users: users });
     }
   }
@@ -71,7 +70,7 @@ class App extends React.Component {
         </div>
         <div className={contentWrapper}>
           <Header toggleNav={this.toggleNav}/>
-          <TrackList playlist={this.state.playlist}/>
+          <TrackList users={this.state.users}/>
         </div>
       </div>
     );
