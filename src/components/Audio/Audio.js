@@ -1,4 +1,6 @@
 import React from 'react';
+import plyr from 'plyr';
+import ReactDOM from 'react-dom';
 import styles from './Audio.scss';
 
 class Audio extends React.Component {
@@ -6,10 +8,14 @@ class Audio extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.player = plyr.setup(styles.plyrInstance)[0];
+  }
+
   render() {
     return(
       <div className={styles.container}>
-        Audio Player
+        <audio className={styles.plyrInstance}></audio>
       </div>
     );
   }
