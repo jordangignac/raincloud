@@ -20,4 +20,4 @@ app.use('/api/v1', api);
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 app.get('*', (req, res) => res.redirect('/'));
 
-app.listen(port, () => console.info('Ready on http://localhost:' + port + '/\n'));
+app.listen(port, () => console.info('Ready on http://localhost:' + port));
