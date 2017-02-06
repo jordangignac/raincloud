@@ -14,7 +14,7 @@ class App extends React.Component {
       navOpen: false
     };
     this.toggleNav = this.toggleNav.bind(this);
-    this.addPlaylist = this.addPlaylist.bind(this);
+    this.togglePlaylist = this.togglePlaylist.bind(this);
     this.removeUser = this.removeUser.bind(this);
     this.addUser = this.addUser.bind(this);
   }
@@ -23,47 +23,42 @@ class App extends React.Component {
     this.setState({ navOpen: !this.state.navOpen });
   }
 
-  addPlaylist(username) {
-    let user = this.state.users.find(o => o.username == username);
-    if (user) this.setState({ playlist: [{ username: user.username, tracks: user.tracks }] });
+  togglePlaylist(username) {
+    let users = this.state.users;
+    let index = users.findIndex(o => o.username == username);
+    if (index >= 0) {
+      users[index].selected = true;
+      this.setState({ users: users });
+    }
   }
 
   addUser(username) {
     let url = 'http://localhost:3000/api/v1/users/' + username;
     let found = this.state.users.find(o => o.username == username);
-    let newUser = {};
+    let newUser = { };
 
-    if (!found && username) {
+    if (!found) {
       axios.get(url)
         .then(({ data }) => {
-          if (data.error) return;
           newUser = data;
           url = url.replace('/users/', '/favorites/');
           return axios.get(url);
         })
         .then(({ data }) => {
-          if (data.error) return;
           newUser.tracks = data;
           newUser.selected = false;
           this.setState({ users: this.state.users.concat(newUser) });
-        });
+        })
+        .catch((error) => console.error(error.stack));
     }
   }
 
   removeUser(username) {
     let users = this.state.users;
-    let playlist = this.state.playlist;
-
     let index = users.findIndex(o => o.username == username);
-    if (index !== -1) {
+    if (index >= 0) {
       users.splice(index, 1);
       this.setState({ users: users });
-    }
-
-    index = playlist.findIndex(o => o.username == username);
-    if (index !== -1) {
-      playlist.splice(index, 1);
-      this.setState({ playlist: playlist });
     }
   }
 
@@ -72,7 +67,7 @@ class App extends React.Component {
     return(
       <div className={styles.container}>
         <div className={styles.sideWrapper}>
-          <Sidebar users={this.state.users} addUser={this.addUser} removeUser={this.removeUser} addPlaylist={this.addPlaylist}/>
+          <Sidebar users={this.state.users} addUser={this.addUser} removeUser={this.removeUser} togglePlaylist={this.togglePlaylist}/>
         </div>
         <div className={contentWrapper}>
           <Header toggleNav={this.toggleNav}/>

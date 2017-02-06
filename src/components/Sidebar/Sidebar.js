@@ -31,7 +31,7 @@ class Sidebar extends React.Component {
           <a onClick={this.handleAdd}>⚲</a>
           <input value={this.state.input} onChange={this.handleInput} onKeyPress={this.handleKey}/>
         </div>
-        <UserList users={this.props.users} removeUser={this.props.removeUser} addPlaylist={this.props.addPlaylist}/>
+        <UserList users={this.props.users} removeUser={this.props.removeUser} togglePlaylist={this.props.togglePlaylist}/>
       </div>
     );
   }
