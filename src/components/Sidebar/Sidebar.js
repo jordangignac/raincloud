@@ -11,12 +11,12 @@ class Sidebar extends React.Component {
     this.handleAdd = this.handleAdd.bind(this);
   }
 
-  handleKey(e) {
-    if (e.key == 'Enter') this.handleAdd();
-  }
-
   handleInput(e) {
     this.setState({ input: e.target.value });
+  }
+
+  handleKey(e) {
+    if (e.key == 'Enter') this.handleAdd();
   }
 
   handleAdd(e) {

@@ -13,9 +13,6 @@
     width: 100%;
     border-radius: 2px;
   }
-  &:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  }
   @media screen and (max-width: 768px) {
     width: 100px;
     height: 100px;
@@ -27,5 +24,38 @@
   @media screen and (max-width: 350px) {
     width: 70px;
     height: 70px;
+  }
+}
+
+.selected {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.playBox {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+  position: absolute;
+  background-color: #1b1b1b;
+  &>div {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 25%;
+    height: 25%;
+    margin: auto;
+    position: absolute;
+    border-radius: 50%;
+    text-align: center;
+    border: 5px solid #fff;
+    background-color: transparent;
+    &>div {
+      color: #ffffff;
+      font-size: 35px;
+      margin-top: -1px;
+      margin-left: 7px;
+    }
   }
 }

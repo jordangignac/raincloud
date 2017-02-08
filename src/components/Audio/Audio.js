@@ -3,6 +3,15 @@ import plyr from 'plyr';
 import styles from './Audio.scss';
 
 class Audio extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleEnded = this.handleEnded.bind(this);
+  }
+
+  handleEnded(e) {
+    this.props.nextTrack();
+  }
+
   componentDidMount() {
     this.player = plyr.setup(styles.plyrInstance)[0];
     this.player.source({
@@ -34,7 +43,7 @@ class Audio extends React.Component {
 
   render() {
     return(
-      <div className={styles.container}>
+      <div className={styles.container} onEnded={this.handleEnded}>
         <audio className={styles.plyrInstance}></audio>
       </div>
     );
